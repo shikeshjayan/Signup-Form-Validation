@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Ensures mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Website favicon -->
+    <link rel="shortcut icon" href="images/favicon_io/favicon-32x32.png" type="image/x-icon">
+
+    <!-- Google Fonts (Montserrat & Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>Signup-Form-Validation</title>
+
+    <!-- Bootstrap CSS Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- Main container: centers the form vertically and horizontally -->
+    <section class="container-fluid d-flex justify-content-center align-items-center vh-100 vw-100 py-3"
+        id="homeContainer">
+
+        <div class="container d-flex flex-column justify-content-center align-items-center rounded bg-light p-5">
+
+            <!-- Page heading -->
+            <h1 class="heading text-center text-wrap p-1">Register</h1>
+
+            <div class="row gap-3 w-100">
+
+                <!-- Left-side image container -->
+                <div class="col left-container text-white d-flex justify-content-center align-items-center">
+                    <img src="images/newnbg.png" alt="Decorative illustration" class="img-fluid">
+                </div>
+
+                <!-- Right-side signup form -->
+                <div class="col p-3">
+
+                    <!-- Registration form -->
+                    <form id="signUpForm" class="signup-form p-2">
+
+                        <!-- Full Name Field -->
+                        <div class="mb-3 p-1">
+                            <label for="InputFullname" class="form-label text-wrap">Fullname</label>
+                            <input type="text" class="form-control" id="InputFullname"
+                                placeholder="Enter your fullname" minlength="3" maxlength="25" required>
+                            <!-- Error message (hidden by default) -->
+                            <div id="fullnameError" class="caution-label caution d-none" aria-live="polite"></div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="mb-3 p-1">
+                            <label for="InputEmail" class="form-label text-wrap">Email</label>
+                            <input type="email" class="form-control" id="InputEmail" placeholder="Enter your email"
+                                required>
+                            <div id="emailError" class="caution-label d-none" aria-live="polite"></div>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="mb-3 p-1">
+                            <label for="InputPassword" class="form-label text-wrap">Password</label>
+
+                            <!-- Password input with show/hide toggle -->
+                            <div class="input-area">
+                                <input type="password" class="form-control" id="InputPassword"
+                                    placeholder="Create password" minlength="6" required>
+                                <!-- Hide/Show Icons -->
+                                <img src="images/Closed Eye.png" alt="" class="hide-password" id="hidePassword">
+                                <img src="images/Red Eye.png" alt="" class="show-password d-none" id="showPassword">
+                            </div>
+
+                            <div id="passwordError" class="caution-label d-none" aria-live="polite"></div>
+                        </div>
+
+                        <!-- Confirm Password Field -->
+                        <div class="mb-3 p-1">
+                            <label for="confirmPassword" class="form-label text-wrap">Confirm Password</label>
+
+                            <div class="input-area">
+                                <input type="password" class="form-control" id="confirmPassword"
+                                    placeholder="Confirm password" minlength="6" required>
+                                <!-- Hide/Show Icons -->
+                                <img src="images/Closed Eye.png" alt="" class="hide-password" id="hideCPassword">
+                                <img src="images/Red Eye.png" alt="" class="show-password d-none" id="showCPassword">
+                            </div>
+
+                            <div id="confirmPasswordError" class="caution-label d-none" aria-live="polite"></div>
+                        </div>
+
+                        <!-- Terms & Conditions Checkbox with custom warning -->
+                        <div class="mb-3 form-check d-flex align-items-center gap-3">
+                            <input type="checkbox" class="form-check-input" id="termsCheck">
+
+                            <label class="form-check-label" for="termsCheck">
+                                I accept the <a href="#" target="_blank">Terms & Conditions</a> and
+                                <a href="#" target="_blank">Privacy Policy</a>
+                            </label>
+
+                            <!-- Warning message for terms not accepted -->
+                            <div class="message-box d-flex align-items-center d-none" aria-live="polite" id="termsMsg">
+                                <img class="msg-icon" src="images/warning.png" alt="Warning symbol indicating an error">
+                                <div class="msg-text">You must accept the terms & conditions.</div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100" id="submitBtn">Register</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Popup Section -->
+    <section class="container-fluid second-container d-flex flex-column align-items-center justify-content-center vh-100 vw-100">
+
+        <div class="popup-container d-none rounded shadow" id="popupContainer">
+            <img src="images/success.svg" alt="Checkmark icon indicating success">
+
+            <div class="blob"></div>
+
+            <!-- Success text (dynamic username displayed) -->
+            <h1 class="text-success popup-text mt-5" id="wecomeText">Welcome, Shikesh!</h1>
+            <h1 class="text-success popup-text mt-1">You're registered successfully.</h1>
+
+            <!-- Go back button -->
+            <button id="goBackBtn" type="button" class="btn btn-success mt-2">Go back</button>
+        </div>
+
+    </section>
+
+    <!-- Validation Script -->
+    <script src="./js/validation.js"></script>
+</body>
+
+</html>

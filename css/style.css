@@ -1,0 +1,345 @@
+/* ----------------------------------------------------
+   GLOBAL RESET & BASE STYLE
+---------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.container-fluid {
+    background: linear-gradient(to right, #FFFFFF, #fff9e3);
+}
+
+/* Main form container styling */
+.container {
+    position: relative;
+    max-height: 55rem !important;
+    max-width: 75rem;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(to left, #E2E2E2, #C9D6FF);
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff !important;
+    animation: fade-in-normal 1s ease 0s 1 normal none;
+}
+
+/* Fade-in animation for form container */
+@keyframes fade-in-normal {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Left illustration image */
+.left-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Main title styling */
+.heading {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 3rem;
+    color: #333333;
+}
+
+/* Form labels */
+.signup-form label {
+    color: #232323;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+}
+
+/* Text input base style */
+.signup-form input:not(.form-check-input) {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    height: 2.5rem;
+    width: 100%;
+    padding: 0 1rem;
+    font-size: 1rem;
+    transition: .3s;
+}
+
+/* Placeholder styling */
+.signup-form input::placeholder {
+    font-size: clamp(0.65rem, 1.1vw, 1rem);
+    font-style: italic;
+}
+
+/* Input hover effect */
+.signup-form input:not(.form-check-input):hover {
+    border-bottom: 2px solid #1941a5;
+}
+
+/* Input focus behavior */
+.signup-form input:not(.form-check-input):focus {
+    border: none;
+    outline: 0px !important;
+    box-shadow: none !important;
+    border-bottom: 2px solid #2979ff;
+    caret-color: #1941a5;
+}
+
+/* Checkbox accent color */
+#termCheck {
+    accent-color: #2979ff;
+}
+
+/* Validation / error message text */
+.caution-label {
+    color: #d9534f;
+    font-size: clamp(0.72rem, 1.1vw, 1rem);
+    margin-top: 5px;
+    display: block;
+    animation: fade-in-normal 1s ease 0s 1 normal none;
+}
+
+/* Duplicate keyframe (kept as requested) */
+@keyframes fade-in-normal {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Reserve height for caution label when visible */
+.caution-label:not(.d-none) {
+    min-height: 20px;
+}
+
+/* Wrapper for input + icons */
+.input-area {
+    position: relative;
+}
+
+/* Show/hide password icons */
+.hide-password,
+.show-password {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+}
+
+/* Checkbox row tweaks */
+.form-check {
+    position: relative;
+    padding-inline-start: 2rem !important;
+    padding-block: 0.5rem !important;
+}
+
+/* Submit button styling */
+.signup-form button {
+    color: #ffffff;
+    background: #2979ff;
+    box-shadow: rgba(0, 0, 0, 0.8);
+    border: none;
+    font-size: 1.2rem;
+    transition: 0.5s ease-in-out;
+}
+
+/* Button hover effect */
+.signup-form button:hover {
+    background: #1941a5;
+    box-shadow: 0 4px 12px rgba(41, 121, 255, 0.20);
+}
+
+/* Button active click state */
+.signup-form button:active {
+    background: #7c92ff !important;
+}
+
+/* ----------------------------------------------------
+   SUCCESS POPUP CONTAINER
+---------------------------------------------------- */
+.second-container {
+    background: linear-gradient(to left, #E2E2E2, #C9D6FF);
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff !important;
+}
+
+/* Popup wrapper */
+.popup-container {
+    position: relative;
+    display: grid;
+    place-items: center;
+    background: #E2E2E2;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+                rgba(17, 17, 26, 0.1) 0px 16px 56px,
+                rgba(17, 17, 26, 0.1) 0px 24px 80px !important;
+
+    padding: 2rem;
+    max-width: 20rem !important;
+    max-height: 20rem !important;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.25s ease;
+    animation: scale-up-center-normal 1s ease 0s 1 normal none;
+}
+
+/* Scale animation for popup */
+@keyframes scale-up-center-normal {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Class added when popup is shown */
+.popup-container.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Popup image layering */
+.popup-container img {
+    z-index: 1111;
+}
+
+/* Animated blob behind success icon */
+.blob {
+    position: absolute;
+    top: 2rem;
+    background: rgba(25, 135, 84, 0.2);
+    border-radius: 50%;
+    margin: 10px;
+    height: 5rem;
+    width: 5rem;
+
+    box-shadow: 0 0 0 0 rgba(25, 135, 84, 1);
+    transform: scale(1);
+    animation: pulse 2s infinite;
+}
+
+/* Blob pulsing animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.65);
+    }
+
+    60% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 30px rgba(25, 135, 84, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(25, 135, 84, 0);
+    }
+}
+
+/* ----------------------------------------------------
+   MESSAGE BOX FOR TERMS CHECKBOX
+---------------------------------------------------- */
+.message-box {
+    position: absolute;
+    bottom: 100%;
+    left: -15px;
+
+    max-width: 380px;
+    padding: 16px;
+
+    background: #ffffff;
+    border: 1px solid #e4e4e4;
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.05),
+        0 1px 3px rgba(0, 0, 0, 0.04);
+
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* Little arrow under tooltip box */
+.message-box::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ffffff;
+}
+
+/* Message text inside tooltip */
+.msg-text {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+/* Success popup text */
+.popup-text {
+    font-size: clamp(0.7rem, 1vw, 1rem);
+}
+
+/* Utility class - hides element */
+.d-none {
+    display: none !important;
+}
+
+/* ----------------------------------------------------
+   RESPONSIVE DESIGN
+---------------------------------------------------- */
+
+/* Small mobile screens */
+@media (max-width: 400px) {
+    .message-box {
+        max-height: 70px;
+        overflow: hidden;
+    }
+
+    .msg-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .msg-text {
+        font-size: 0.5rem;
+    }
+}
+
+/* Tablets & small devices */
+@media (max-width: 768px) {
+    .signup-form input:not(.form-check-input) {
+        height: 2.2rem;
+        font-size: 11px;
+    }
+
+    .signup-form button {
+        font-size: 1rem;
+    }
+
+    .heading {
+        font-size: 2rem;
+    }
+}
+
+/* Hide left illustration for medium screens */
+@media (max-width: 992px) {
+    .left-container {
+        display: none !important;
+    }
+
+    .form-check-label {
+        font-size: clamp(0.5rem, 1vw, 1rem) !important;
+        font-weight: 500 !important;
+    }
+}
