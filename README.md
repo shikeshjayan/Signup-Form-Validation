@@ -3,7 +3,7 @@
 A fully responsive and interactive Signup Form Validation is Front-End project built with HTML, CSS, and JavaScript.
 It includes real-time form validation, password strength rules, password visibility toggle, a success popup, and accessibility-friendly features.
 
-![Signup Form Screenshot](./assets/Signup Form Validation.png)
+![Signup Form Screenshot](assets/signup-form-validation.png)
 
 ## Installation
 
